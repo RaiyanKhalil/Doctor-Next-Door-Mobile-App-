@@ -2,6 +2,7 @@ package com.example.newdu.dnd;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -37,5 +38,11 @@ public class DbManager extends SQLiteOpenHelper {
             return "Failed";
         else
             return "Successfully inserted";
+    }
+
+    public Cursor alldata(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from docInfo", null);
+        return cursor;
     }
 }
